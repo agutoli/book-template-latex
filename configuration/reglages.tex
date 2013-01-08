@@ -1,0 +1,28 @@
+% Options du package hyperref
+\hypersetup{%
+  plainpages=false,
+    hyperfootnotes=false,
+    pdfpagelabels,
+    bookmarks,
+    pdftitle={\thetitle},
+    pdfauthor={\theauthor},
+    pdfkeywords={\motscles},
+    pdfsubject={\sujet}
+}
+% Génération de l'index
+\makeindex
+% Génération du ou des glossaires et liste(s) des acronymes
+\makeglossaries
+% Entête et pied de page vides au début du document
+\pagestyle{empty}
+% Test pour pages blanches
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "../book"
+%%% End:

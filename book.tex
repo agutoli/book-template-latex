@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appel de la classe de document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ici, classe pour rapport, avec une taille du corps de base par
+% défaut en 12 points, format de page A4 et globalement francisé
+\documentclass[12pt,a4paper,french]{book}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appel des différents packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Accès aux glyphes des fontes ayant le codage T1
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+% Codage d'entrée en utf8.
+\usepackage[utf8]{inputenc}
+% Pour les réglages de la géométrie de la page
+\usepackage[a4paper]{geometry}
+% Pour la gestion des interlignes
+\usepackage{setspace}
+% Pour la gestion du titre
+\usepackage{titling}
+% Pour les épigraphes
+\usepackage{epigraph}
+% Pour générer un index
+\usepackage{makeidx}
+% Pour gérer les titres courants (entêtes) et bas de page
+\usepackage{fancyhdr}
+% Pour la gestion des titres de sectionnement
+\usepackage{titlesec}
+% Pour faire figurer les table des matières, bibliographie et index
+% dans la table des matières
+\usepackage{tocbibind}
+% Pour régler finement la profondeur de la table des matières et de la
+% numérotation
+\usepackage{tocvsec2}
+% Pour configurer les listes
+\usepackage{enumitem}
+% Pour la gestion des notes de bas de page
+\usepackage[multiple,para]{footmisc}
+% Pour un document en français (récupère l'option french passée à la
+% commande \documentclass)
+\usepackage{babel}
+% Pour améliorer les références croisées
+\usepackage{varioref}
+% Pour les citations
+\usepackage{csquotes}
+% Bibliographie
+\usepackage{biblatex}
+% Pour générer les dates
+\usepackage{datetime}
+% Pour la gestion des hyperliens (les options sont fixées dans le
+% fichier reglages.tex du dossier configuration)
+\usepackage{hyperref}
+% Pour générer le glossaire et les acronymes
+\usepackage[xindy,style=listhypergroup,smallcaps,acronym,toc]{glossaries}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fichiers de configuration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Importation du fichier de données propres au rapport (noms,
+% adresses, etc.)
+\input{configuration/donnees}
+% Importation du fichier des macros personnelles
+\input{configuration/macros}
+% Importation du fichier de configurations diverses
+\input{configuration/reglages}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Début du document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Partie plus ou moins figée
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+% Importation du fichier de titre
+\input{parties-figees/titre}
+% Importation du fichier de dédicace
+\input{parties-figees/dedicace}
+% Importation du fichier d'épigraphe
+\input{parties-figees/epigraphe}
+% Début de l'insertion des titres courants
+\pagestyle{headings}
+% Insertion de la table des matières
+\tableofcontents
+% Inclusion du glossaire (si besoin est)
+\printglossaries
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Partie variable
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Inclusion du preface
+\include{chapitres/preface}
+% Insertion de l'introduction
+\include{chapitres/introduction}
+% Insertion du premier chapitre
+\include{chapitres/chapitre_un}
+% Insertion de la conclusion
+\include{chapitres/conclusion}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliographie
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Insertion de la bibliographie
+\printbibliography[heading=bibintoc]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Annexes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Réglages propres à la partie annexe du document
+\appendix
+% Insertion du chapitre juridique
+\include{chapitres/juridique}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Index
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Impression de l'index
+\printindex
+% Fin du document
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
